@@ -3,24 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wel-safa <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: wel-safa <wel-safa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 10:42:56 by wel-safa          #+#    #+#              #
-#    Updated: 2023/05/10 12:38:47 by wel-safa         ###   ########.fr        #
+#    Updated: 2023/05/15 19:10:48 by wel-safa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := libft.a
-SRC := $(wildcard *.c) #needs to be explicitely written
-
+#SRC := $(wildcard *.c) #needs to be explicitely written
+SRC	:= ft_atoi.c ft_isalnum.c ft_isdigit.c ft_memchr.c ft_memmove.c\
+	ft_putendl_fd.c ft_split.c ft_striteri.c ft_strlcpy.c ft_strnstr.c\
+	ft_substr.c ft_bzero.c ft_isalpha.c ft_isprint.c ft_memcmp.c\
+	ft_memset.c ft_putnbr_fd.c ft_strchr.c ft_strjoin.c ft_strlen.c\
+	ft_strrchr.c ft_tolower.c ft_calloc.c ft_isascii.c ft_itoa.c\
+	ft_memcpy.c ft_putchar_fd.c ft_putstr_fd.c ft_strdup.c ft_strlcat.c\
+	ft_strmapi.c ft_strtrim.c  ft_toupper.c
 OBJS := ${SRC:.c=.o}
 
-#BONUS := Bonus functions
-#BONUS_OBJS := ${BONUS:.c=.o}
+BONUS := ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
+BONUS_OBJS := ${BONUS:.c=.o}
 
 CFLAGS := -Wall -Werror -Wextra -g
 
-all: $(NAME) #bonus
+all: $(NAME) bonus
 
 #below command:
 #1) creates object files not executables
@@ -32,14 +38,14 @@ $(NAME): $(OBJS) libft.h
 	ranlib $(NAME)
 
 clean:
-	$(RM) -f $(OBJS)
+	$(RM) -f $(OBJS) $(BONUS_OBJS)
 
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
 
-#bonus: $(BONUS_OBJS)
-#	ar rcs $(NAME) $(BONUS_OBJS)
+bonus: $(BONUS_OBJS)
+	ar rcs $(NAME) $(BONUS_OBJS)
 
 .PHONY: clean fclean all re
