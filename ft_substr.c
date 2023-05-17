@@ -6,7 +6,7 @@
 /*   By: wel-safa <wel-safa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 15:08:10 by wel-safa          #+#    #+#             */
-/*   Updated: 2023/05/14 17:42:04 by wel-safa         ###   ########.fr       */
+/*   Updated: 2023/05/17 22:39:13 by wel-safa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			lcpy;
 
 	lcpy = ft_strlen(s) - start;
-	if (start >= ft_strlen(s))
+	if (start >= ft_strlen(s) || len == 0)
 	{
 		subs = (char *)malloc(1);
-		subs[0] = 0;
+		if (subs)
+			subs[0] = '\0';
 		return (subs);
 	}
 	else

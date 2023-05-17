@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wel-safa <wel-safa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 17:56:30 by wel-safa          #+#    #+#             */
-/*   Updated: 2023/05/17 22:34:12 by wel-safa         ###   ########.fr       */
+/*   Created: 2023/05/17 16:17:09 by wel-safa          #+#    #+#             */
+/*   Updated: 2023/05/17 18:12:17 by wel-safa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (node == 0)
+	if (!lst)
 		return (NULL);
-	node->content = content;
-	node->next = NULL;
-	return (node);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
+/*
+int	main(void)
+{
+	t_list *head;
+	head = ft_lstnew("Hello");
+	ft_lstadd_front(&head, ft_lstnew("You"));
+	t_list *lst;
+	lst = ft_lstlast(head);
+	printf("%s\n", (char *)lst->content);
+	return (0);
+}*/
