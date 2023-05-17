@@ -27,14 +27,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
-	size_t	setl;
 	char	*trimstr;
 	size_t	i;
 
 	i = 0;
 	start = 0;
 	end = ft_strlen(s1);
-	setl = ft_strlen(set);
 	while (s1[start] && ft_findchr(s1[start], set))
 		start++;
 	while (end > start && ft_findchr(s1[end - 1], set))
