@@ -6,7 +6,7 @@
 /*   By: wel-safa <wel-safa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 20:03:00 by wel-safa          #+#    #+#             */
-/*   Updated: 2023/05/17 22:47:09 by wel-safa         ###   ########.fr       */
+/*   Updated: 2023/06/08 15:14:43 by wel-safa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,19 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*newlst;
 	t_list	*temp;
+	void	*pointer;
 
 	if (!lst || !f)
 		return (NULL);
 	newlst = NULL;
+	pointer = NULL;
 	while (lst)
 	{
-		temp = ft_lstnew(f(lst->content));
+		pointer = f(lst->content);
+		temp = ft_lstnew(pointer);
 		if (!temp)
 		{
-			ft_lstclear(&lst, del);
+			free(pointer);
 			ft_lstclear(&newlst, del);
 			return (NULL);
 		}
